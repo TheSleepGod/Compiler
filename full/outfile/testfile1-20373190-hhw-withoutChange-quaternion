@@ -1,0 +1,188 @@
+const int A_GLOBAL = 0
+const int B_GLOBAL = 0
+const int C_GLOBAL = 0
+const int D_GLOBAL = 0
+const int E_GLOBAL = 0
+const int F_GLOBAL = 0
+const int Arr1_1_GLOBAL[5]
+const int Arr2_1_GLOBAL[3][2]
+int a_glogal 
+int arr1_1_global[5]
+int arr2_1_global[3][2]
+int func_params()
+para a
+para[] b
+para[][2] c
+int d 
+$t0 = a * 2 
+Var a[]
+$t1 = 0 + $t1 
+$t1 = $t1 % 2 
+$t0 = $t0 + $t1 
+Var a[]
+$t1 = 0 + $t1 
+$t1 = $t1 % 3 
+$t0 = $t0 + $t1 
+d = $t0
+$t0 = a + 2 
+$t0 = d * $t0 
+a_glogal = $t0
+compare $t0 50 Eq_0
+j Lor_0
+error! = a_glogal
+print str_1
+print -1 error!
+print str_2
+compare $t0 50 Eq_1
+j Lor_1
+print str_3
+error! = a_glogal
+print str_4
+print -1 error!
+print str_5
+ret 0
+int func2_params()
+para a
+para b
+para c
+int res 
+$t0 = a + b 
+$t0 = $t0 + c 
+$t0 = 6 * $t0 
+$t0 = $t0 / 2 
+$t0 = $t0 - 2 
+res = $t0
+error! = a
+error! = b
+error! = c
+error! = res
+print str_6
+print -1 error!
+print str_7
+print -1 error!
+print str_8
+print -1 error!
+print str_9
+print -1 error!
+print str_10
+ret res
+void func3_params()
+para a
+error! = a
+print str_11
+print -1 error!
+print str_12
+void func4_params()
+para a
+para b
+error! = a
+error! = b
+print str_13
+print -1 error!
+print str_14
+print -1 error!
+print str_15
+int func_no_params()
+print str_16
+ret 0
+void func2_no_params()
+int main()
+int main_var_a 
+int main_var_b 
+int main_var_c 
+scanf t6
+main_var_a = t6
+scanf t6
+main_var_b = t6
+print str_17
+error! = error!
+print str_18
+print -1 error!
+print str_19
+push 3
+func = ret
+push 1
+push 2
+func = ret
+func = ret
+func = ret
+Global a[]
+$t0 = 4 + $t0 
+$t0 = error!
+Global a[]
+$t0 = 16 + $t0 
+$t0 = error!
+Global a[]
+$t0 = 8 + $t0 
+$t0 = error!
+Global a[]
+$t0 = 12 + $t0 
+$t0 = error!
+Global a[]
+$t0 = 12 + $t0 
+Global a[]
+$t1 = 4 + $t1 
+$t1 = $t1 * 2 
+$t0 = $t1
+Global a[]
+$t0 = 12 + $t0 
+error! = $t0
+print str_20
+print -1 error!
+print str_21
+push 1
+push arr1_1_global
+push $t0
+$t0 = error!
+push arr2_1_global
+push $t0
+$t0 = error!
+func = ret
+push 2
+Global a[]
+$t0 = 4 + $t0 
+push $t0
+$t0 = error!
+Global a[]
+$t0 = 12 + $t0 
+push $t0
+$t0 = error!
+func = ret
+main_var_c = func
+error! = main_var_c
+print str_22
+print -1 error!
+print str_23
+$t0 = main_var_a % 7 
+compare $t0 0 Eq_2
+j Lor_2
+$t0 = main_var_b % 7 
+compare $t0 0 Eq_3
+j Lor_2
+$t0 = main_var_a + main_var_b 
+main_var_a = $t0
+$t0 = main_var_a % 7 
+compare $t0 0 Eq_5
+j Lor_4
+compare $t6 100 Eq_6
+j Lor_5
+compare $t6 30 Eq_7
+j Lor_6
+error! = main_var_a
+print str_24
+print -1 error!
+print str_25
+compare $t6 10 Eq_8
+j Lor_7
+error! = main_var_a
+print str_26
+print -1 error!
+print str_27
+error! = main_var_a
+print str_28
+print -1 error!
+print str_29
+main_var_a = main_var_a
+main_var_b = main_var_b
+print str_30
+ret 0

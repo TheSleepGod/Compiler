@@ -1,0 +1,40 @@
+.data
+str_1: .asciiz "Now a_global is "
+str_2: .asciiz ", it is < 50.\n"
+str_3: .asciiz "Now a_global is exactly 50!!!.\n"
+str_4: .asciiz "Now a_global is "
+str_5: .asciiz ", it is > 50.\n"
+str_6: .asciiz "I am a function with 3 param: {{ "
+str_7: .asciiz ", "
+str_8: .asciiz ", "
+str_9: .asciiz " }} and I return "
+str_10: .asciiz ".\n"
+str_11: .asciiz "I am a function with only one param: {{ "
+str_12: .asciiz " }} and I return noting.\n"
+str_13: .asciiz "I am a function with 2 param: {{ "
+str_14: .asciiz ", "
+str_15: .asciiz " }} and I return noting.\n"
+str_16: .asciiz "I am a function without params and I return 0.\n"
+str_17: .asciiz "19241091\n"
+str_18: .asciiz "A_GLOBAL = "
+str_19: .asciiz "\n"
+str_20: .asciiz "arr2_1_global[1][1] is "
+str_21: .asciiz "\n"
+str_22: .asciiz "Now main_var_c is "
+str_23: .asciiz "\n"
+str_24: .asciiz "Now main_var_a is "
+str_25: .asciiz ", it is >= 30\n"
+str_26: .asciiz "Now main_var_a is "
+str_27: .asciiz ", it is <= 10\n"
+str_28: .asciiz "Now main_var_a is "
+str_29: .asciiz ", it is > 10 and < 30\n"
+str_30: .asciiz "==================testfile1 end=================="
+Arr1_1_GLOBAL: .word 1 2 3 4 5 
+Arr2_1_GLOBAL: .word 1 2 3 4 5 6 
+a_glogal: .word 0
+arr1_1_global: .word 1 2 3 4 5 
+arr2_1_global: .word 1 2 3 4 5 6 
+.text
+li $fp, 0x10040000
+j main
+nop

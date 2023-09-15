@@ -1,0 +1,584 @@
+.data
+str_1: .asciiz "Now a_global is "
+str_2: .asciiz ", it is < 50.\n"
+str_3: .asciiz "Now a_global is exactly 50!!!.\n"
+str_4: .asciiz "Now a_global is "
+str_5: .asciiz ", it is > 50.\n"
+str_6: .asciiz "I am a function with 3 param: {{ "
+str_7: .asciiz ", "
+str_8: .asciiz ", "
+str_9: .asciiz " }} and I return "
+str_10: .asciiz ".\n"
+str_11: .asciiz "I am a function with only one param: {{ "
+str_12: .asciiz " }} and I return noting.\n"
+str_13: .asciiz "I am a function with 2 param: {{ "
+str_14: .asciiz ", "
+str_15: .asciiz " }} and I return noting.\n"
+str_16: .asciiz "I am a function without params and I return 0.\n"
+str_17: .asciiz "19241091\n"
+str_18: .asciiz "A_GLOBAL = "
+str_19: .asciiz "\n"
+str_20: .asciiz "arr2_1_global[1][1] is "
+str_21: .asciiz "\n"
+str_22: .asciiz "Now main_var_c is "
+str_23: .asciiz "\n"
+str_24: .asciiz "Now main_var_a is "
+str_25: .asciiz ", it is >= 30\n"
+str_26: .asciiz "Now main_var_a is "
+str_27: .asciiz ", it is <= 10\n"
+str_28: .asciiz "Now main_var_a is "
+str_29: .asciiz ", it is > 10 and < 30\n"
+str_30: .asciiz "==================testfile1 end=================="
+Arr1_1_GLOBAL: .word 1 2 3 4 5 
+Arr2_1_GLOBAL: .word 1 2 3 4 5 6 
+a_glogal: .word 0
+arr1_1_global: .word 1 2 3 4 5 
+arr2_1_global: .word 1 2 3 4 5 6 
+.text
+li $fp, 0x10040000
+j main
+nop
+
+func_params:
+lw $t0 0($fp)
+mul $t0 $t0 2 
+lw $t1 4($fp)
+add $t1 $t1 0 
+lw $t1 0($t1)
+div $t1 $t1 2 
+mfhi $t1 
+add $t0 $t0 $t1
+lw $t1 8($fp)
+add $t1 $t1 0 
+lw $t1 0($t1)
+div $t1 $t1 3 
+mfhi $t1 
+add $t0 $t0 $t1
+or $t6 $t0 $zero
+lw $t0 0($fp)
+add $t0 $t0 2 
+mul $t0 $t6 $t0
+sw $t0 a_glogal 
+lw $t0 a_glogal
+slti $t0 $t0 50 
+beqz $t0 Lor_0
+j Eq_0
+Eq_0:
+j if_begin_0
+Lor_0:
+j if_else_0
+if_begin_0:
+lw $t0 a_glogal
+or $s7 $t0 $zero
+li $v0 4
+la $a0 str_1
+syscall
+li $v0 1
+or $a0 $s7 $zero
+syscall
+li $v0 4
+la $a0 str_2
+syscall
+j if_end_0
+if_else_0:
+lw $t0 a_glogal
+seq $t0 $t0 50 
+beqz $t0 Lor_1
+j Eq_1
+Eq_1:
+j if_begin_1
+Lor_1:
+j if_else_1
+if_begin_1:
+li $v0 4
+la $a0 str_3
+syscall
+j if_end_1
+if_else_1:
+lw $t0 a_glogal
+or $s7 $t0 $zero
+li $v0 4
+la $a0 str_4
+syscall
+li $v0 1
+or $a0 $s7 $zero
+syscall
+li $v0 4
+la $a0 str_5
+syscall
+if_end_1:
+if_end_0:
+li $v0 0
+jr $ra
+jr $ra
+
+func2_params:
+lw $t0 0($fp)
+lw $t1 4($fp)
+add $t0 $t0 $t1
+lw $t1 8($fp)
+add $t0 $t0 $t1
+mul $t0 $t0 6 
+div $t0 $t0 2 
+sub $t0 $t0 2 
+or $t6 $t0 $zero
+lw $t0 0($fp)
+or $s7 $t0 $zero
+lw $t0 4($fp)
+sw $t0 12($fp) 
+lw $t0 8($fp)
+sw $t0 16($fp) 
+sw $t6 20($fp) 
+li $v0 4
+la $a0 str_6
+syscall
+li $v0 1
+or $a0 $s7 $zero
+syscall
+li $v0 4
+la $a0 str_7
+syscall
+li $v0 1
+lw $a0 12($fp)
+syscall
+li $v0 4
+la $a0 str_8
+syscall
+li $v0 1
+lw $a0 16($fp)
+syscall
+li $v0 4
+la $a0 str_9
+syscall
+li $v0 1
+lw $a0 20($fp)
+syscall
+li $v0 4
+la $a0 str_10
+syscall
+move $v0 $t6
+jr $ra
+jr $ra
+
+func3_params:
+lw $t0 0($fp)
+or $s7 $t0 $zero
+li $v0 4
+la $a0 str_11
+syscall
+li $v0 1
+or $a0 $s7 $zero
+syscall
+li $v0 4
+la $a0 str_12
+syscall
+jr $ra
+jr $ra
+
+func4_params:
+lw $t0 0($fp)
+or $s7 $t0 $zero
+lw $t0 4($fp)
+sw $t0 8($fp) 
+li $v0 4
+la $a0 str_13
+syscall
+li $v0 1
+or $a0 $s7 $zero
+syscall
+li $v0 4
+la $a0 str_14
+syscall
+li $v0 1
+lw $a0 8($fp)
+syscall
+li $v0 4
+la $a0 str_15
+syscall
+jr $ra
+jr $ra
+
+func_no_params:
+li $v0 4
+la $a0 str_16
+syscall
+li $v0 0
+jr $ra
+jr $ra
+
+func2_no_params:
+jr $ra
+
+main:
+li $v0 5
+syscall
+or $t6 $v0 $zero
+li $v0 5
+syscall
+or $t7 $v0 $zero
+li $v0 4
+la $a0 str_17
+syscall
+li $t0 1
+li $s7 1
+li $v0 4
+la $a0 str_18
+syscall
+li $v0 1
+or $a0 $s7 $zero
+syscall
+li $v0 4
+la $a0 str_19
+syscall
+li $a0 3
+sw $a0 0($fp)
+addi $sp $sp -40
+sw $t6 0($sp)
+sw $t7 4($sp)
+sw $s0 8($sp)
+sw $s1 12($sp)
+sw $s2 16($sp)
+sw $s3 20($sp)
+sw $s4 24($sp)
+sw $s5 28($sp)
+sw $s6 32($sp)
+sw $ra 36($sp)
+addi $fp $fp 0
+jal func3_params
+addi $fp $fp 0
+lw $t6 0($sp)
+lw $t7 4($sp)
+lw $s0 8($sp)
+lw $s1 12($sp)
+lw $s2 16($sp)
+lw $s3 20($sp)
+lw $s4 24($sp)
+lw $s5 28($sp)
+lw $s6 32($sp)
+lw $ra 36($sp)
+addi $sp $sp 40
+or $s7 $v0 $zero
+li $a0 1
+sw $a0 0($fp)
+li $a0 2
+sw $a0 4($fp)
+addi $sp $sp -44
+sw $t6 0($sp)
+sw $t7 4($sp)
+sw $s0 8($sp)
+sw $s1 12($sp)
+sw $s2 16($sp)
+sw $s3 20($sp)
+sw $s4 24($sp)
+sw $s5 28($sp)
+sw $s6 32($sp)
+sw $s7 36($sp)
+sw $ra 40($sp)
+addi $fp $fp 0
+jal func4_params
+addi $fp $fp 0
+lw $t6 0($sp)
+lw $t7 4($sp)
+lw $s0 8($sp)
+lw $s1 12($sp)
+lw $s2 16($sp)
+lw $s3 20($sp)
+lw $s4 24($sp)
+lw $s5 28($sp)
+lw $s6 32($sp)
+lw $s7 36($sp)
+lw $ra 40($sp)
+addi $sp $sp 44
+sw $v0 0($fp) 
+addi $sp $sp -44
+sw $t6 0($sp)
+sw $t7 4($sp)
+sw $s0 8($sp)
+sw $s1 12($sp)
+sw $s2 16($sp)
+sw $s3 20($sp)
+sw $s4 24($sp)
+sw $s5 28($sp)
+sw $s6 32($sp)
+sw $s7 36($sp)
+sw $ra 40($sp)
+addi $fp $fp 4
+jal func_no_params
+addi $fp $fp -4
+lw $t6 0($sp)
+lw $t7 4($sp)
+lw $s0 8($sp)
+lw $s1 12($sp)
+lw $s2 16($sp)
+lw $s3 20($sp)
+lw $s4 24($sp)
+lw $s5 28($sp)
+lw $s6 32($sp)
+lw $s7 36($sp)
+lw $ra 40($sp)
+addi $sp $sp 44
+sw $v0 4($fp) 
+addi $sp $sp -44
+sw $t6 0($sp)
+sw $t7 4($sp)
+sw $s0 8($sp)
+sw $s1 12($sp)
+sw $s2 16($sp)
+sw $s3 20($sp)
+sw $s4 24($sp)
+sw $s5 28($sp)
+sw $s6 32($sp)
+sw $s7 36($sp)
+sw $ra 40($sp)
+addi $fp $fp 8
+jal func2_no_params
+addi $fp $fp -8
+lw $t6 0($sp)
+lw $t7 4($sp)
+lw $s0 8($sp)
+lw $s1 12($sp)
+lw $s2 16($sp)
+lw $s3 20($sp)
+lw $s4 24($sp)
+lw $s5 28($sp)
+lw $s6 32($sp)
+lw $s7 36($sp)
+lw $ra 40($sp)
+addi $sp $sp 44
+sw $v0 8($fp) 
+la $t0 arr1_1_global
+add $t0 $t0 4 
+li $t1 2
+sw $t1 0($t0)
+la $t0 arr1_1_global
+add $t0 $t0 16 
+li $t1 3
+sw $t1 0($t0)
+la $t0 arr1_1_global
+add $t0 $t0 8 
+li $t1 4
+sw $t1 0($t0)
+la $t0 arr2_1_global
+add $t0 $t0 12 
+li $t1 4
+sw $t1 0($t0)
+la $t0 arr2_1_global
+add $t0 $t0 12 
+la $t1 arr1_1_global
+add $t1 $t1 4 
+lw $t1 0($t1)
+mul $t1 $t1 2 
+sw $t1 0($t0)
+la $t0 arr2_1_global
+add $t0 $t0 12 
+lw $t0 0($t0)
+sw $t0 12($fp) 
+li $v0 4
+la $a0 str_20
+syscall
+li $v0 1
+lw $a0 12($fp)
+syscall
+li $v0 4
+la $a0 str_21
+syscall
+la $t0 arr1_1_global
+or $a1 $t0 $zero
+la $t0 arr2_1_global
+or $a2 $t0 $zero
+li $a0 1
+sw $a0 16($fp)
+sw $a1 20($fp)
+sw $a2 24($fp)
+addi $sp $sp -44
+sw $t6 0($sp)
+sw $t7 4($sp)
+sw $s0 8($sp)
+sw $s1 12($sp)
+sw $s2 16($sp)
+sw $s3 20($sp)
+sw $s4 24($sp)
+sw $s5 28($sp)
+sw $s6 32($sp)
+sw $s7 36($sp)
+sw $ra 40($sp)
+addi $fp $fp 16
+jal func_params
+addi $fp $fp -16
+lw $t6 0($sp)
+lw $t7 4($sp)
+lw $s0 8($sp)
+lw $s1 12($sp)
+lw $s2 16($sp)
+lw $s3 20($sp)
+lw $s4 24($sp)
+lw $s5 28($sp)
+lw $s6 32($sp)
+lw $s7 36($sp)
+lw $ra 40($sp)
+addi $sp $sp 44
+sw $v0 16($fp) 
+la $t0 arr1_1_global
+add $t0 $t0 4 
+lw $t0 0($t0)
+or $a1 $t0 $zero
+la $t0 arr2_1_global
+add $t0 $t0 12 
+lw $t0 0($t0)
+or $a2 $t0 $zero
+li $a0 2
+sw $a0 20($fp)
+sw $a1 24($fp)
+sw $a2 28($fp)
+addi $sp $sp -44
+sw $t6 0($sp)
+sw $t7 4($sp)
+sw $s0 8($sp)
+sw $s1 12($sp)
+sw $s2 16($sp)
+sw $s3 20($sp)
+sw $s4 24($sp)
+sw $s5 28($sp)
+sw $s6 32($sp)
+sw $s7 36($sp)
+sw $ra 40($sp)
+addi $fp $fp 20
+jal func2_params
+addi $fp $fp -20
+lw $t6 0($sp)
+lw $t7 4($sp)
+lw $s0 8($sp)
+lw $s1 12($sp)
+lw $s2 16($sp)
+lw $s3 20($sp)
+lw $s4 24($sp)
+lw $s5 28($sp)
+lw $s6 32($sp)
+lw $s7 36($sp)
+lw $ra 40($sp)
+addi $sp $sp 44
+sw $v0 20($fp) 
+lw $t0 20($fp)
+or $s0 $t0 $zero
+sw $s0 24($fp) 
+li $v0 4
+la $a0 str_22
+syscall
+li $v0 1
+lw $a0 24($fp)
+syscall
+li $v0 4
+la $a0 str_23
+syscall
+div $t0 $t6 7 
+mfhi $t0 
+sne $t0 $t0 0 
+beqz $t0 Lor_2
+j Eq_2
+Eq_2:
+div $t0 $t7 7 
+mfhi $t0 
+sne $t0 $t0 0 
+beqz $t0 Lor_2
+j Eq_3
+Eq_3:
+j if_begin_2
+Lor_2:
+j if_else_2
+if_begin_2:
+while__0:
+seq $t0 $t6 0
+beqz $t0 Lor_3
+j Eq_4
+Eq_4:
+j if_begin_3
+Lor_3:
+j if_end_3
+if_begin_3:
+add $t0 $t6 $t7
+or $t6 $t0 $zero
+div $t0 $t6 7 
+mfhi $t0 
+seq $t0 $t0 0 
+beqz $t0 Lor_4
+j Eq_5
+Eq_5:
+j if_begin_4
+Lor_4:
+sgt $t0 $t6 100 
+beqz $t0 Lor_5
+j Eq_6
+Eq_6:
+j if_begin_4
+Lor_5:
+j if_else_4
+if_begin_4:
+j if_end_3
+j if_end_4
+if_else_4:
+j while__0
+if_end_4:
+j while__0
+if_end_3:
+if_else_2:
+sge $t0 $t6 30 
+beqz $t0 Lor_6
+j Eq_7
+Eq_7:
+j if_begin_5
+Lor_6:
+j if_else_5
+if_begin_5:
+sw $t6 28($fp) 
+li $v0 4
+la $a0 str_24
+syscall
+li $v0 1
+lw $a0 28($fp)
+syscall
+li $v0 4
+la $a0 str_25
+syscall
+j if_end_5
+if_else_5:
+sle $t0 $t6 10 
+beqz $t0 Lor_7
+j Eq_8
+Eq_8:
+j if_begin_6
+Lor_7:
+j if_else_6
+if_begin_6:
+sw $t6 32($fp) 
+li $v0 4
+la $a0 str_26
+syscall
+li $v0 1
+lw $a0 32($fp)
+syscall
+li $v0 4
+la $a0 str_27
+syscall
+j if_end_6
+if_else_6:
+sw $t6 36($fp) 
+li $v0 4
+la $a0 str_28
+syscall
+li $v0 1
+lw $a0 36($fp)
+syscall
+li $v0 4
+la $a0 str_29
+syscall
+if_end_6:
+if_end_5:
+neg $t0 $t6
+or $t6 $t0 $zero
+or $t7 $t7 $zero
+li $v0 4
+la $a0 str_30
+syscall
+li $v0 0
+li $v0 10
+syscall

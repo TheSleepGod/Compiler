@@ -1,0 +1,14 @@
+.data
+.text
+li $fp, 0x10040000
+j main
+nop
+
+main:
+li $v0 5
+syscall
+or $t6 $v0 $zero
+or $s7 $t6 $zero
+li $v0 1
+or $a0 $s7 $zero
+syscall

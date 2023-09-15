@@ -1,0 +1,5 @@
+int main()
+int a 
+error! = a
+print -1 error!
+5 g

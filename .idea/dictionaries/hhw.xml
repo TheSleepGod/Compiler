@@ -1,0 +1,35 @@
+<component name="ProjectDictionaryState">
+  <dictionary name="hhw">
+    <words>
+      <w>asciiz</w>
+      <w>beqz</w>
+      <w>breaktk</w>
+      <w>consttk</w>
+      <w>continuetk</w>
+      <w>elsetk</w>
+      <w>errorhanding</w>
+      <w>getinttk</w>
+      <w>idenfr</w>
+      <w>iftk</w>
+      <w>intcon</w>
+      <w>lbrack</w>
+      <w>lparent</w>
+      <w>maintk</w>
+      <w>mfhi</w>
+      <w>mflo</w>
+      <w>minu</w>
+      <w>mult</w>
+      <w>printftk</w>
+      <w>rbrack</w>
+      <w>returntk</w>
+      <w>rparent</w>
+      <w>scanf</w>
+      <w>semicn</w>
+      <w>slti</w>
+      <w>strcon</w>
+      <w>tmpp</w>
+      <w>voidtk</w>
+      <w>whiletk</w>
+    </words>
+  </dictionary>
+</component>
